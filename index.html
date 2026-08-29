@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Restobar By Sol · Madrid</title>
-<meta name="description" content="Restobar By Sol — cafetería, bar, cervecería y pizzería en el patio gastronómico del Mercado Guillermo de Osma, Madrid. Pizzas artesanales, raciones, tequeños, copas y cócteles.">
+<meta name="description" content="Restobar By Sol — bar, restaurante y pizzería en el Mercado Guillermo de Osma, Madrid. Pizzas artesanales y platos argentinos y españoles: tequeños, pulpo, calamares, raciones, copas y cócteles.">
 <meta name="theme-color" content="#0B0710">
 <link rel="icon" href="img/logo.webp">
 <meta property="og:title" content="Restobar By Sol · Madrid">
-<meta property="og:description" content="Pizzas artesanales, raciones para compartir y buenas copas en el Mercado Guillermo de Osma.">
+<meta property="og:description" content="Bar y restaurante en Madrid: pizzas artesanales y platos argentinos y españoles, en el Mercado Guillermo de Osma.">
 <meta property="og:image" content="img/pizza-burrata.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,14 +53,14 @@ p{line-height:1.65;margin:0 0 1rem}
 .dark .btn-ghost:hover{background:#fff;color:var(--noche)}
 
 /* ============ NAV ============ */
-header{position:fixed;inset:0 0 auto 0;z-index:60;padding:.7rem 0;transition:background .4s,backdrop-filter .4s,box-shadow .4s}
+header{position:fixed;inset:0 0 auto 0;z-index:60;padding:.55rem 0;transition:background .4s,backdrop-filter .4s,box-shadow .4s}
 header.stuck{background:rgba(255,247,238,.86);backdrop-filter:blur(14px);box-shadow:0 8px 30px -18px rgba(28,20,16,.6)}
 header.stuck.on-dark{background:rgba(10,6,17,.8)}
 .nav{display:flex;align-items:center;gap:1rem;justify-content:space-between}
 .marca{display:flex;align-items:center;gap:.65rem;text-decoration:none;font-weight:700;letter-spacing:.02em}
-.marca img{width:44px;height:44px;border-radius:50%;filter:drop-shadow(0 0 10px rgba(165,107,255,.55))}
-.marca span{font-size:.95rem;line-height:1.05}
-.marca small{display:block;font-weight:400;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;opacity:.6}
+.marca img{width:62px;height:62px;border-radius:50%;filter:drop-shadow(0 0 14px rgba(165,107,255,.65))}
+.marca span{font-size:1.18rem;line-height:1.05}
+.marca small{display:block;font-weight:500;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;opacity:.65}
 .nav-links{display:none;gap:1.6rem;font-weight:500;font-size:.95rem}
 .nav-links a{text-decoration:none;position:relative;padding:.2rem 0}
 .nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--sol);transition:width .3s}
@@ -78,11 +78,14 @@ header.on-dark .marca,header.on-dark .nav-links{color:#fff}
 @keyframes girar{to{transform:rotate(360deg)}}
 .hero-grid{display:grid;gap:2.6rem;align-items:center;position:relative;z-index:2}
 @media(min-width:960px){.hero-grid{grid-template-columns:1.05fr .95fr;gap:3.2rem}}
-.badge{display:inline-flex;align-items:center;gap:.5rem;background:#fff;border:1px solid rgba(28,20,16,.1);
-  padding:.5rem .95rem;border-radius:999px;font-size:.82rem;font-weight:500;box-shadow:0 6px 18px -12px rgba(28,20,16,.5);margin-bottom:1.3rem}
-.badge b{color:var(--sol-hot)}
-.punto{width:8px;height:8px;border-radius:50%;background:#1FBF63;box-shadow:0 0 0 0 rgba(31,191,99,.6);animation:latir 2.2s infinite}
-@keyframes latir{70%{box-shadow:0 0 0 12px rgba(31,191,99,0)}100%{box-shadow:0 0 0 0 rgba(31,191,99,0)}}
+.badge{display:inline-block;position:relative;overflow:hidden;
+  background:linear-gradient(100deg,var(--sol-hot) 0%,var(--sol) 48%,#FFB44D 100%);color:#fff;border:0;
+  padding:.62rem 1.2rem;border-radius:999px;font-size:.94rem;font-weight:600;line-height:1.3;
+  box-shadow:0 16px 32px -16px rgba(244,91,11,.95);margin-bottom:1.4rem}
+.badge b{color:#fff;font-weight:700}
+.badge::after{content:"";position:absolute;top:0;left:-60%;width:42%;height:100%;pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);animation:brillo 5s ease-in-out infinite}
+@keyframes brillo{0%{left:-60%}55%,100%{left:130%}}
 h1 .linea{display:block}
 h1 .destacado{color:var(--sol-hot)}
 .hero p.lead{margin-top:1.4rem}
@@ -218,7 +221,9 @@ footer a{color:#C9BAD6}
   background:linear-gradient(90deg,var(--sol),var(--neon-magenta));transition:width .1s linear}
 @media(max-width:600px){
   .hero{min-height:auto;padding:5.6rem 0 2.5rem}
-  .badge{font-size:.76rem;padding:.45rem .8rem;line-height:1.35}
+  .badge{font-size:.84rem;padding:.55rem 1rem;line-height:1.4;max-width:100%}
+  .marca img{width:52px;height:52px}
+  .marca span{font-size:1.05rem}
   .nav .btn{padding:.55rem .95rem;font-size:.85rem}
   .marca img{width:38px;height:38px}
   .hero-art{aspect-ratio:1/1;padding:.4rem}
@@ -260,13 +265,13 @@ footer a{color:#C9BAD6}
   <div class="rayos"></div>
   <div class="wrap hero-grid">
     <div>
-      <div class="badge"><i class="punto"></i> <b>Mercado Guillermo de Osma</b> · Madrid</div>
+      <div class="badge"><b>Bar · Restaurante</b> · Pizzas y platos argentinos y españoles</div>
       <h1>
         <span class="linea">Comer,</span>
         <span class="linea">brindar</span>
         <span class="linea destacado">y quedarse.</span>
       </h1>
-      <p class="mano" style="margin:.9rem 0 0">Cafetería · Bar · Cervecería · Pizzería</p>
+      <p class="mano" style="margin:.9rem 0 0">Cafetería · Bar · Cervecería · Restaurante · Pizzería</p>
       <p class="lead">Un espacio pensado para disfrutar de la mejor combinación entre gastronomía, bebidas y buen ambiente. Cada plato se prepara al momento, con ingredientes seleccionados y mucho cariño.</p>
       <div class="hero-cta">
         <a class="btn btn-wa" href="https://wa.me/34636521691?text=%C2%A1Hola%20Restobar%20By%20Sol!%20Me%20gustar%C3%ADa%20reservar%20una%20mesa." target="_blank" rel="noopener">
