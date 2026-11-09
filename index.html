@@ -3,99 +3,545 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Restobar By Sol · En construcción</title>
-<meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Restobar By Sol — estamos preparando nuestra web.">
-<meta name="theme-color" content="#0A0611">
+<title>Restobar By Sol · Madrid</title>
+<meta name="description" content="Restobar By Sol — bar, restaurante y pizzería en el Mercado Guillermo de Osma, Madrid. Pizzas artesanales y platos argentinos y españoles: tequeños, pulpo, calamares, raciones, copas y cócteles.">
+<meta name="theme-color" content="#0B0710">
 <link rel="icon" href="img/logo.webp">
+<meta property="og:title" content="Restobar By Sol · Madrid">
+<meta property="og:description" content="Bar y restaurante en Madrid: pizzas artesanales y platos argentinos y españoles, en el Mercado Guillermo de Osma.">
+<meta property="og:image" content="img/pizza-burrata.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
+/* ============ BASE ============ */
 :root{
-  --noche:#0A0611; --sol:#FF8A1F; --sol-hot:#F45B0B;
-  --neon-magenta:#FF3EA5; --neon-violeta:#A56BFF; --texto:#EFE6F5; --texto-suave:#B8A9C6;
-  --f-display:'Anton',system-ui,sans-serif; --f-body:'Outfit',system-ui,sans-serif;
+  --crema:#FFF7EE; --crema-2:#FDEBD8; --tinta:#1C1410; --tinta-suave:#6B5B50;
+  --sol:#FF8A1F; --sol-hot:#F45B0B; --cielo:#3B8FD4; --cielo-claro:#9FCBEC;
+  --noche:#0A0611; --noche-2:#150C22; --neon-magenta:#FF3EA5; --neon-violeta:#A56BFF;
+  --neon-naranja:#FFA13B; --neon-cian:#4BE7FF;
+  --radio:22px; --max:1180px;
+  --f-display:'Anton',system-ui,sans-serif; --f-body:'Outfit',system-ui,sans-serif; --f-mano:'Caveat',cursive;
 }
 *{box-sizing:border-box}
-body{margin:0;min-height:100svh;display:grid;place-items:center;padding:2rem 1.2rem;
-  font-family:var(--f-body);color:var(--texto);background:var(--noche);overflow-x:hidden;text-align:center}
-body::before,body::after{content:"";position:fixed;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0}
-body::before{width:46vmax;height:46vmax;background:rgba(165,107,255,.42);top:-16vmax;left:-16vmax}
-body::after{width:40vmax;height:40vmax;background:rgba(255,62,165,.3);bottom:-16vmax;right:-14vmax}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--f-body);color:var(--tinta);background:var(--crema);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{width:min(100% - 2.4rem,var(--max));margin-inline:auto}
+section{position:relative}
 
-.caja{position:relative;z-index:2;max-width:560px;width:100%}
+/* ============ TIPOGRAFÍA ============ */
+h1,h2,h3{margin:0;font-family:var(--f-display);font-weight:400;letter-spacing:.01em;line-height:.95;text-transform:uppercase}
+h1{font-size:clamp(2.6rem,8.4vw,5.4rem)}
+h2{font-size:clamp(2rem,6.2vw,3.9rem)}
+h3{font-size:clamp(1.1rem,2.6vw,1.45rem);letter-spacing:.02em}
+p{line-height:1.65;margin:0 0 1rem}
+.kicker{font-family:var(--f-body);font-weight:600;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--sol-hot);display:block;margin-bottom:.9rem}
+.mano{font-family:var(--f-mano);font-size:clamp(1.5rem,4vw,2.2rem);color:var(--sol-hot);text-transform:none;line-height:1}
+.lead{font-size:clamp(1.02rem,2.1vw,1.18rem);color:var(--tinta-suave);max-width:56ch}
 
-/* ---- Logo ---- */
-.marco{position:relative;width:min(62vw,230px);margin:0 auto 2.2rem;aspect-ratio:1;display:grid;place-items:center}
-.aro{position:absolute;inset:0;border-radius:50%;border:1px dashed rgba(255,138,31,.45);animation:girar 26s linear infinite}
-.aro::after{content:"";position:absolute;top:-6px;left:50%;width:10px;height:10px;border-radius:50%;
-  background:var(--sol);box-shadow:0 0 16px 5px rgba(255,138,31,.8);transform:translateX(-50%)}
+/* ============ BOTONES ============ */
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:.95rem 1.6rem;border-radius:999px;font-weight:600;
+  font-size:1rem;text-decoration:none;border:2px solid transparent;transition:transform .25s cubic-bezier(.2,.8,.3,1),box-shadow .25s,background .25s,color .25s;will-change:transform}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-wa{background:#1FBF63;color:#fff;box-shadow:0 10px 26px -10px rgba(31,191,99,.9)}
+.btn-wa:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 16px 34px -10px rgba(31,191,99,.95)}
+.btn-ghost{border-color:currentColor;color:var(--tinta)}
+.btn-ghost:hover{transform:translateY(-3px);background:var(--tinta);color:var(--crema)}
+.dark .btn-ghost{color:#fff}
+.dark .btn-ghost:hover{background:#fff;color:var(--noche)}
+
+/* ============ NAV ============ */
+header{position:fixed;inset:0 0 auto 0;z-index:60;padding:.55rem 0;transition:background .4s,backdrop-filter .4s,box-shadow .4s}
+header.stuck{background:rgba(255,247,238,.86);backdrop-filter:blur(14px);box-shadow:0 8px 30px -18px rgba(28,20,16,.6)}
+header.stuck.on-dark{background:rgba(10,6,17,.8)}
+.nav{display:flex;align-items:center;gap:1rem;justify-content:space-between}
+.marca{display:flex;align-items:center;gap:.65rem;text-decoration:none;font-weight:700;letter-spacing:.02em}
+.marca img{width:62px;height:62px;border-radius:50%;filter:drop-shadow(0 0 14px rgba(165,107,255,.65))}
+.marca span{font-size:1.18rem;line-height:1.05}
+.marca small{display:block;font-weight:500;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;opacity:.65}
+.nav-links{display:none;gap:1.6rem;font-weight:500;font-size:.95rem}
+.nav-links a{text-decoration:none;position:relative;padding:.2rem 0}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--sol);transition:width .3s}
+.nav-links a:hover::after{width:100%}
+header.on-dark .marca,header.on-dark .nav-links{color:#fff}
+.nav .btn{padding:.65rem 1.1rem;font-size:.9rem}
+@media(min-width:900px){.nav-links{display:flex}}
+
+/* ============ HERO DÍA ============ */
+.hero{min-height:100svh;display:flex;align-items:center;padding:6.2rem 0 3.5rem;overflow:hidden;
+  background:radial-gradient(120% 90% at 78% 8%,#FFE2B8 0%,#FFF1DE 42%,var(--crema) 72%)}
+.rayos{position:absolute;top:-28vmax;right:-22vmax;width:72vmax;height:72vmax;pointer-events:none;
+  background:conic-gradient(from 0deg,rgba(255,138,31,.20) 0 6deg,transparent 6deg 22deg);
+  border-radius:50%;animation:girar 70s linear infinite;opacity:.85}
 @keyframes girar{to{transform:rotate(360deg)}}
-.logo{width:82%;border-radius:50%;display:block;
-  filter:drop-shadow(0 0 30px rgba(165,107,255,.75)) drop-shadow(0 0 60px rgba(255,62,165,.45));
-  animation:parpadeo 6s infinite}
-@keyframes parpadeo{0%,100%{opacity:1}47%{opacity:1}48%{opacity:.7}49%{opacity:1}73%{opacity:.82}74%{opacity:1}}
+.hero-grid{display:grid;gap:2.6rem;align-items:center;position:relative;z-index:2}
+@media(min-width:960px){.hero-grid{grid-template-columns:1.05fr .95fr;gap:3.2rem}}
+.badge{display:inline-block;position:relative;overflow:hidden;
+  background:linear-gradient(100deg,var(--sol-hot) 0%,var(--sol) 48%,#FFB44D 100%);color:#fff;border:0;
+  padding:.62rem 1.2rem;border-radius:999px;font-size:.94rem;font-weight:600;line-height:1.3;
+  box-shadow:0 16px 32px -16px rgba(244,91,11,.95);margin-bottom:1.4rem}
+.badge b{color:#fff;font-weight:700}
+.badge::after{content:"";position:absolute;top:0;left:-60%;width:42%;height:100%;pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);animation:brillo 5s ease-in-out infinite}
+@keyframes brillo{0%{left:-60%}55%,100%{left:130%}}
+h1 .linea{display:block}
+h1 .destacado{color:var(--sol-hot)}
+.hero p.lead{margin-top:1.4rem}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.85rem;margin-top:2rem}
+.hero-art{position:relative;display:grid;place-items:center;aspect-ratio:1/1;padding:1rem}
+.halo{position:absolute;width:72%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,138,31,.55),rgba(165,107,255,.22) 46%,transparent 70%);
+  filter:blur(38px);animation:pulso 6s ease-in-out infinite}
+@keyframes pulso{0%,100%{transform:scale(1);opacity:.75}50%{transform:scale(1.12);opacity:1}}
+.anillo{position:absolute;border-radius:50%;pointer-events:none;aspect-ratio:1}
+.anillo-1{width:88%;border:1px dashed rgba(244,91,11,.38);animation:girar 46s linear infinite}
+.anillo-2{width:100%;border:1px solid rgba(165,107,255,.3);animation:girar 76s linear infinite reverse}
+.anillo-2::after{content:"";position:absolute;top:-6px;left:50%;width:11px;height:11px;border-radius:50%;
+  background:var(--sol);box-shadow:0 0 16px 5px rgba(255,138,31,.75);transform:translateX(-50%)}
+.disco{width:min(74%,410px);aspect-ratio:1;border-radius:50%;position:relative;z-index:3;
+  animation:flotar 7s ease-in-out infinite;filter:drop-shadow(0 28px 58px rgba(70,20,110,.45))}
+@keyframes flotar{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
 
-/* ---- Texto ---- */
-.eyebrow{font-size:.76rem;letter-spacing:.3em;text-transform:uppercase;color:var(--sol);
-  font-weight:600;margin:0 0 1rem}
-h1{font-family:var(--f-display);font-weight:400;text-transform:uppercase;letter-spacing:.02em;
-  font-size:clamp(2.3rem,10vw,4.4rem);line-height:.95;margin:0;color:#fff;
-  text-shadow:0 0 10px rgba(255,255,255,.45),0 0 28px var(--neon-magenta),0 0 56px rgba(255,62,165,.55)}
-h1 small{display:block;font-size:.36em;letter-spacing:.06em;color:var(--sol);
-  text-shadow:0 0 18px rgba(255,138,31,.7);margin-top:.5rem}
-p{color:var(--texto-suave);font-size:1.05rem;line-height:1.65;margin:1.6rem auto 0;max-width:40ch}
+/* ============ MARQUESINA ============ */
+.ticker{background:var(--tinta);color:var(--crema);padding:.95rem 0;overflow:hidden;white-space:nowrap;border-block:3px solid var(--sol)}
+.ticker-in{display:inline-flex;gap:2.4rem;animation:correr 34s linear infinite;font-family:var(--f-display);font-size:1.15rem;letter-spacing:.05em}
+.ticker-in span{display:inline-flex;align-items:center;gap:2.4rem}
+.ticker-in i{color:var(--sol);font-style:normal}
+@keyframes correr{to{transform:translateX(-50%)}}
 
-/* ---- Barra ---- */
-.barra{position:relative;height:6px;border-radius:99px;background:rgba(255,255,255,.1);
-  overflow:hidden;margin:2.4rem auto 0;max-width:280px}
-.barra span{position:absolute;inset:0;width:40%;border-radius:99px;
-  background:linear-gradient(90deg,var(--sol-hot),var(--sol),var(--neon-magenta));
-  animation:correr 2.6s ease-in-out infinite}
-@keyframes correr{0%{left:-40%}100%{left:100%}}
+/* ============ BLOQUES ============ */
+.bloque{padding:clamp(4rem,9vw,7rem) 0}
+.cabecera{max-width:60ch;margin-bottom:3rem}
+.tarjetas{display:grid;gap:1.4rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.tarjeta{background:#fff;border:1px solid rgba(28,20,16,.08);border-radius:var(--radio);padding:2rem 1.7rem;
+  transition:transform .35s cubic-bezier(.2,.8,.3,1),box-shadow .35s;position:relative;overflow:hidden}
+.tarjeta::before{content:"";position:absolute;inset:auto -30% -60% -30%;height:120%;background:radial-gradient(circle at 50% 0,rgba(255,138,31,.18),transparent 65%);opacity:0;transition:opacity .4s}
+.tarjeta:hover{transform:translateY(-8px);box-shadow:0 26px 50px -26px rgba(28,20,16,.55)}
+.tarjeta:hover::before{opacity:1}
+.tarjeta .ic{font-size:1.9rem;margin-bottom:.9rem;display:block}
+.tarjeta p{margin:0;color:var(--tinta-suave);font-size:.98rem}
+.tarjeta h3{margin-bottom:.6rem}
 
-/* ---- Contacto (bórralo si no lo quieres) ---- */
-.wa{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;margin-top:2.4rem;
-  padding:.95rem 1.7rem;border-radius:999px;background:#1FBF63;color:#fff;font-weight:600;
-  text-decoration:none;box-shadow:0 14px 34px -12px rgba(31,191,99,.9);
-  transition:transform .25s cubic-bezier(.2,.8,.3,1)}
-.wa:hover,.wa:focus-visible{transform:translateY(-3px) scale(1.02)}
-.wa svg{width:20px;height:20px;fill:currentColor}
-.pie{margin-top:2.6rem;font-size:.85rem;color:#8C7C9B}
+/* ============ GALERÍAS ============ */
+.galeria{display:grid;gap:1.1rem;grid-template-columns:1fr}
+@media(min-width:620px){.galeria{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:960px){.galeria{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:620px){.galeria.dos{grid-template-columns:repeat(2,1fr)}}
+.plato{position:relative;border-radius:var(--radio);overflow:hidden;background:#000;aspect-ratio:4/5;
+  transition:transform .45s cubic-bezier(.2,.8,.3,1),box-shadow .45s}
+.plato img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.8,.3,1),filter .5s}
+.plato figcaption{position:absolute;inset:auto 0 0 0;padding:2.6rem 1.2rem 1.15rem;color:#fff;
+  background:linear-gradient(transparent,rgba(0,0,0,.82));font-weight:600;font-size:1.02rem;
+  transform:translateY(6px);transition:transform .4s}
+.plato figcaption em{display:block;font-style:normal;font-weight:400;font-size:.85rem;opacity:.8;margin-top:.15rem}
+.plato:hover{transform:translateY(-6px);box-shadow:0 30px 60px -28px rgba(0,0,0,.7)}
+.plato:hover img{transform:scale(1.09)}
+.plato:hover figcaption{transform:translateY(0)}
+@media(min-width:620px){.plato.ancho{grid-column:span 2;aspect-ratio:16/11}}
 
-a:focus-visible{outline:2px solid var(--sol);outline-offset:3px}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* ============ ATARDECER ============ */
+.atardecer{height:62svh;min-height:380px;overflow:hidden;
+  background:linear-gradient(180deg,var(--crema) 0%,#FFD08A 22%,#FF8A1F 44%,#C4407A 68%,#3A1550 86%,var(--noche) 100%)}
+.sol-bola{position:absolute;left:50%;top:12%;width:min(30vw,190px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 42% 38%,#FFF3C4,#FFB43C 46%,#FF6A1F 78%);
+  transform:translate(-50%,0);box-shadow:0 0 120px 30px rgba(255,150,40,.5);will-change:transform}
+.atardecer .frase{position:absolute;inset:auto 0 5% 0;z-index:3;text-align:center;color:#fff;padding-inline:1.5rem;
+  text-shadow:0 4px 26px rgba(0,0,0,.55)}
+.atardecer .frase h2{font-size:clamp(1.8rem,5.4vw,3.4rem)}
+.atardecer .frase p{margin:.7rem auto 0;max-width:44ch;opacity:.92}
+.olas{position:absolute;inset:auto 0 -1px 0;height:80px;background:var(--noche);
+  -webkit-mask:radial-gradient(60% 100% at 50% 100%,#000 60%,transparent 61%);mask:radial-gradient(60% 100% at 50% 100%,#000 60%,transparent 61%);display:none}
+
+/* ============ NOCHE ============ */
+.dark{background:var(--noche);color:#EFE6F5}
+.dark .lead{color:#B8A9C6}
+.dark .kicker{color:var(--neon-magenta)}
+.dark .tarjeta{background:rgba(255,255,255,.045);border-color:rgba(255,255,255,.1)}
+.dark .tarjeta p{color:#B8A9C6}
+.noche{padding:clamp(4.5rem,10vw,8rem) 0;overflow:hidden}
+.noche::before,.noche::after{content:"";position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;opacity:.5}
+.noche::before{width:44vmax;height:44vmax;background:rgba(165,107,255,.42);top:-14vmax;left:-16vmax}
+.noche::after{width:38vmax;height:38vmax;background:rgba(255,62,165,.3);bottom:-16vmax;right:-14vmax}
+.noche .wrap{position:relative;z-index:2}
+.neon-grid{display:grid;gap:3rem;align-items:center}
+@media(min-width:960px){.neon-grid{grid-template-columns:.92fr 1.08fr;gap:4rem}}
+.neon-logo{width:min(84%,400px);margin-inline:auto;border-radius:50%;animation:parpadeo 6s infinite;
+  filter:drop-shadow(0 0 34px rgba(165,107,255,.75)) drop-shadow(0 0 70px rgba(255,62,165,.45))}
+@keyframes parpadeo{0%,100%{opacity:1}47%{opacity:1}48%{opacity:.72}49%{opacity:1}72%{opacity:1}73%{opacity:.8}74%{opacity:1}}
+.neon-txt{color:#fff;text-shadow:0 0 8px rgba(255,255,255,.5),0 0 22px var(--neon-magenta),0 0 46px rgba(255,62,165,.6)}
+.lista-noche{list-style:none;padding:0;margin:1.8rem 0 0;display:grid;gap:.9rem}
+.lista-noche li{display:flex;gap:.85rem;align-items:flex-start;font-size:1.03rem;color:#D9CDE4}
+.lista-noche b{color:#fff;font-weight:600}
+.chispa{flex:none;width:22px;height:22px;border-radius:50%;margin-top:.15rem;
+  background:radial-gradient(circle,var(--neon-naranja),rgba(255,161,59,0) 70%)}
+
+/* ============ IDENTIDAD ============ */
+.dos-orillas{display:grid;gap:2.4rem;align-items:center}
+@media(min-width:900px){.dos-orillas{grid-template-columns:1fr 1fr;gap:3.4rem}}
+.marco{border-radius:var(--radio);overflow:hidden;border:1px solid rgba(255,255,255,.14);box-shadow:0 30px 70px -30px rgba(0,0,0,.9)}
+
+/* ============ VISÍTANOS ============ */
+.visita{padding:clamp(4rem,9vw,7rem) 0;background:
+  linear-gradient(180deg,var(--noche) 0%,#1B1030 100%)}
+.mapa-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:var(--radio);
+  padding:clamp(1.8rem,4vw,3rem);display:grid;gap:2rem}
+@media(min-width:860px){.mapa-card{grid-template-columns:1.1fr .9fr;gap:3rem;align-items:center}}
+.dato{margin-bottom:1.6rem}
+.dato span{display:block;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--neon-magenta);margin-bottom:.35rem}
+.dato a,.dato p{font-size:1.12rem;color:#fff;text-decoration:none;margin:0;font-weight:500;line-height:1.45}
+.dato a:hover{color:var(--neon-naranja)}
+.acciones{display:flex;flex-direction:column;gap:.8rem}
+.acciones .btn{justify-content:center;width:100%}
+.btn-ig{background:linear-gradient(135deg,#F9CE34,#EE2A7B 52%,#6228D7);color:#fff;box-shadow:0 12px 30px -12px rgba(238,42,123,.9)}
+.btn-ig:hover{transform:translateY(-3px) scale(1.02)}
+.btn-mapa{background:#fff;color:var(--noche)}
+.btn-mapa:hover{transform:translateY(-3px) scale(1.02)}
+
+/* ============ FOOTER ============ */
+footer{background:#07040D;color:#8C7C9B;padding:2.6rem 0;text-align:center;font-size:.9rem}
+footer .marca{justify-content:center;color:#fff;margin-bottom:1rem;display:inline-flex}
+footer a{color:#C9BAD6}
+
+/* ============ WHATSAPP FLOTANTE ============ */
+.wa-flota{position:fixed;right:1.1rem;bottom:1.1rem;z-index:70;width:60px;height:60px;border-radius:50%;
+  background:#1FBF63;display:grid;place-items:center;box-shadow:0 14px 34px -10px rgba(31,191,99,.95);
+  transition:transform .3s;opacity:0;pointer-events:none}
+.wa-flota.ver{opacity:1;pointer-events:auto}
+.wa-flota:hover{transform:scale(1.09)}
+.wa-flota svg{width:32px;height:32px;fill:#fff}
+.wa-flota::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid rgba(31,191,99,.55);animation:onda 2.4s infinite}
+@keyframes onda{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.7);opacity:0}}
+
+/* ============ REVELADO AL SCROLL ============ */
+.rv{opacity:0;transform:translateY(34px);transition:opacity .8s cubic-bezier(.2,.8,.3,1),transform .8s cubic-bezier(.2,.8,.3,1)}
+.rv.visto{opacity:1;transform:none}
+.barra-scroll{position:fixed;top:0;left:0;height:3px;width:0;z-index:80;
+  background:linear-gradient(90deg,var(--sol),var(--neon-magenta));transition:width .1s linear}
+@media(max-width:600px){
+  .hero{min-height:auto;padding:5.6rem 0 2.5rem}
+  .badge{font-size:.84rem;padding:.55rem 1rem;line-height:1.4;max-width:100%}
+  .marca img{width:52px;height:52px}
+  .marca span{font-size:1.05rem}
+  .nav .btn{padding:.55rem .95rem;font-size:.85rem}
+  .marca img{width:38px;height:38px}
+  .hero-art{aspect-ratio:1/1;padding:.4rem}
+  .disco{width:min(72%,310px)}
+  .hero-cta .btn,.acciones .btn{width:100%;justify-content:center}
+  .nav .btn{width:auto}
+  .hero-cta{gap:.7rem}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition-duration:.01ms!important}
+  .rv{opacity:1;transform:none}
+}
 </style>
 </head>
 <body>
-  <main class="caja">
+<div class="barra-scroll" id="barra"></div>
 
-    <div class="marco">
-      <div class="aro"></div>
-      <img class="logo" src="img/logo.webp" alt="Restobar By Sol" onerror="this.style.display='none'">
-    </div>
-
-    <p class="eyebrow">Restobar By Sol</p>
-
-    <h1>
-      En construcción
-      <small>Volvemos muy pronto</small>
-    </h1>
-
-    <p>Estamos preparando nuestra web para enseñarte todo lo que se cocina aquí. Mientras tanto, la cocina sigue encendida.</p>
-
-    <div class="barra"><span></span></div>
-
-    <!-- ===== Botón de WhatsApp — borra este bloque si no quieres contacto ===== -->
-    <a class="wa" href="https://wa.me/34636521691?text=%C2%A1Hola%20Restobar%20By%20Sol!" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2m0 1.7a8.3 8.3 0 0 1 6.6 13.3 8.3 8.3 0 0 1-10.9 2.3l-.4-.2-3.1.8.8-3-.2-.4A8.3 8.3 0 0 1 12 3.7"/></svg>
-      Escríbenos por WhatsApp
+<header id="cabecera">
+  <nav class="nav wrap">
+    <a class="marca" href="#inicio">
+      <img src="img/logo.webp" alt="Logo Restobar By Sol">
+      <span>Restobar<br><small>By Sol</small></span>
     </a>
-    <!-- ===== fin del bloque de WhatsApp ===== -->
+    <div class="nav-links">
+      <a href="#pizzas">Pizzas</a>
+      <a href="#compartir">Para compartir</a>
+      <a href="#noche">La noche</a>
+      <a href="#visitanos">Visítanos</a>
+    </div>
+    <a class="btn btn-wa" href="https://wa.me/34636521691?text=%C2%A1Hola%20Restobar%20By%20Sol!%20Me%20gustar%C3%ADa%20reservar%20una%20mesa." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2m0 1.7a8.3 8.3 0 0 1 6.6 13.3 8.3 8.3 0 0 1-10.9 2.3l-.4-.2-3.1.8.8-3-.2-.4A8.3 8.3 0 0 1 12 3.7"/></svg>
+      Reservar
+    </a>
+  </nav>
+</header>
 
-    <p class="pie">Mercado Guillermo de Osma · Madrid</p>
+<!-- ================= HERO DÍA ================= -->
+<section class="hero" id="inicio">
+  <div class="rayos"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="badge"><b>Bar · Restaurante</b> · Pizzas y platos argentinos y españoles</div>
+      <h1>
+        <span class="linea">Comer,</span>
+        <span class="linea">brindar</span>
+        <span class="linea destacado">y quedarse.</span>
+      </h1>
+      <p class="mano" style="margin:.9rem 0 0">Cafetería · Bar · Cervecería · Restaurante · Pizzería</p>
+      <p class="lead">Un espacio pensado para disfrutar de la mejor combinación entre gastronomía, bebidas y buen ambiente. Cada plato se prepara al momento, con ingredientes seleccionados y mucho cariño.</p>
+      <div class="hero-cta">
+        <a class="btn btn-wa" href="https://wa.me/34636521691?text=%C2%A1Hola%20Restobar%20By%20Sol!%20Me%20gustar%C3%ADa%20reservar%20una%20mesa." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2m0 1.7a8.3 8.3 0 0 1 6.6 13.3 8.3 8.3 0 0 1-10.9 2.3l-.4-.2-3.1.8.8-3-.2-.4A8.3 8.3 0 0 1 12 3.7"/></svg>
+          Escríbenos por WhatsApp
+        </a>
+        <a class="btn btn-ghost" href="#pizzas">Ver la comida ↓</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="halo"></div>
+      <div class="anillo anillo-1"></div>
+      <div class="anillo anillo-2"></div>
+      <img class="disco" src="img/logo.webp" alt="Rótulo de neón Restobar By Sol">
+    </div>
+  </div>
+</section>
 
-  </main>
+<!-- ================= MARQUESINA ================= -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-in">
+    <span>Desayunos <i>✦</i> Platos combinados <i>✦</i> Bocadillos <i>✦</i> Montados <i>✦</i> Pizzas artesanales <i>✦</i> Tablas de patatas <i>✦</i> Raciones <i>✦</i> Copas <i>✦</i> Cafés <i>✦</i> Smoothies naturales <i>✦</i></span>
+    <span>Desayunos <i>✦</i> Platos combinados <i>✦</i> Bocadillos <i>✦</i> Montados <i>✦</i> Pizzas artesanales <i>✦</i> Tablas de patatas <i>✦</i> Raciones <i>✦</i> Copas <i>✦</i> Cafés <i>✦</i> Smoothies naturales <i>✦</i></span>
+  </div>
+</div>
+
+<!-- ================= EXPERIENCIA ================= -->
+<section class="bloque">
+  <div class="wrap">
+    <div class="cabecera rv">
+      <span class="kicker">Un lugar para disfrutar</span>
+      <h2>Más que un restaurante,<br>una experiencia</h2>
+      <p class="lead" style="margin-top:1.2rem">Aquí cada visita comienza con una sonrisa, continúa con sabores deliciosos y termina con recuerdos que quedan para siempre. Queremos que cada detalle marque la diferencia: desde el primer saludo hasta el último brindis.</p>
+    </div>
+    <div class="tarjetas">
+      <article class="tarjeta rv">
+        <span class="ic">🍕</span>
+        <h3>Nuestra gastronomía</h3>
+        <p>Variedad de platos preparados al momento, desde opciones para compartir hasta las especialidades de la casa. Cada plato está elaborado con dedicación para que quieras volver por más.</p>
+      </article>
+      <article class="tarjeta rv">
+        <span class="ic">🍹</span>
+        <h3>Bebidas y cócteles</h3>
+        <p>Acompaña tu comida con una bebida refrescante o déjate sorprender por nuestros cócteles. Opciones ideales para una tarde tranquila, una cena especial o una noche entre amigos.</p>
+      </article>
+      <article class="tarjeta rv">
+        <span class="ic">🎶</span>
+        <h3>Un ambiente para disfrutar</h3>
+        <p>Queremos que te sientas como en casa. Un espacio para compartir con amigos, celebrar ocasiones especiales o desconectar de la rutina con buena música y buena compañía.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PIZZAS ================= -->
+<section class="bloque" id="pizzas" style="background:linear-gradient(180deg,var(--crema),var(--crema-2))">
+  <div class="wrap">
+    <div class="cabecera rv">
+      <span class="kicker">Especialidad de la casa</span>
+      <h2>Pizzas artesanales</h2>
+      <p class="lead" style="margin-top:1.2rem">Masa hecha en casa, horneada al momento y con ingredientes que se notan en cada bocado.</p>
+    </div>
+    <div class="galeria">
+      <figure class="plato rv ancho"><img src="img/pizza-burrata.webp" alt="Pizza con jamón, rúcula y burrata" loading="lazy"><figcaption>Jamón, rúcula y burrata<em>La favorita de la casa</em></figcaption></figure>
+      <figure class="plato rv"><img src="img/pizza-jalapenos.webp" alt="Pizza con jalapeños" loading="lazy"><figcaption>Jalapeños<em>Para los que aguantan el picante</em></figcaption></figure>
+      <figure class="plato rv"><img src="img/pizza-margarita.webp" alt="Pizza margarita con albahaca" loading="lazy"><figcaption>Margarita<em>Clásica, con albahaca fresca</em></figcaption></figure>
+      <figure class="plato rv"><img src="img/pizza-mechada.webp" alt="Pizza de carne mechada" loading="lazy"><figcaption>Carne mechada<em>Sabor de casa</em></figcaption></figure>
+      <figure class="plato rv"><img src="img/pizza-carne.webp" alt="Pizza de carne con queso fundido" loading="lazy"><figcaption>Carne y queso fundido<em>Recién salida del horno</em></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PARA COMPARTIR ================= -->
+<section class="bloque" id="compartir">
+  <div class="wrap">
+    <div class="cabecera rv">
+      <span class="kicker">Raciones y tapas</span>
+      <h2>Para compartir<br>en el centro de la mesa</h2>
+      <p class="lead" style="margin-top:1.2rem">Ponemos pasión en cada plato que llega a tu mesa. Porque creemos que la comida sabe mejor cuando se prepara con amor… y se comparte.</p>
+    </div>
+    <div class="galeria">
+      <figure class="plato rv"><img src="img/pulpo.webp" alt="Pulpo con patatas" loading="lazy"><figcaption>Pulpo con patatas<em>Ración generosa</em></figcaption></figure>
+      <figure class="plato rv"><img src="img/calamares.webp" alt="Calamares a la romana" loading="lazy"><figcaption>Calamares a la romana<em>Crujientes, con limón</em></figcaption></figure>
+      <figure class="plato rv"><img src="img/tequenos.webp" alt="Tequeños con salsas" loading="lazy"><figcaption>Tequeños<em>Con sus dos salsas</em></figcaption></figure>
+      <figure class="plato rv"><img src="img/ensaladilla.webp" alt="Ensaladilla con anchoas y tostadas" loading="lazy"><figcaption>Ensaladilla con anchoas<em>Con pan tostado</em></figcaption></figure>
+      <figure class="plato rv"><img src="img/gyozas.webp" alt="Gyozas con salsa de soja" loading="lazy"><figcaption>Gyozas<em>Con salsa de soja</em></figcaption></figure>
+      <figure class="plato rv"><img src="img/ambiente.webp" alt="Mesa con varias raciones para compartir" loading="lazy"><figcaption>La mesa completa<em>Raciones, patatas y buena compañía</em></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ATARDECER ================= -->
+<section class="atardecer" aria-hidden="true">
+  <div class="sol-bola" id="sol"></div>
+  <div class="frase">
+    <h2 style="color:#fff">Y entonces cae el sol</h2>
+    <p>El mismo sitio, otra energía.</p>
+  </div>
+</section>
+
+<!-- ================= NOCHE ================= -->
+<section class="dark noche" id="noche">
+  <div class="wrap neon-grid">
+    <div class="rv">
+      <img class="neon-logo" src="img/logo.webp" alt="Rótulo de neón Restobar By Sol encendido">
+    </div>
+    <div class="rv">
+      <span class="kicker">La noche en By Sol</span>
+      <h2 class="neon-txt">Momentos que merecen ser compartidos</h2>
+      <p class="lead" style="margin-top:1.3rem">Una cena en pareja, una reunión con amigos, un cumpleaños o simplemente esas ganas de salir y pasarla bien… cualquier ocasión es perfecta para visitarnos.</p>
+      <ul class="lista-noche">
+        <li><i class="chispa"></i><span><b>Cócteles y copas</b> — de los clásicos de siempre a los que se inventa la casa.</span></li>
+        <li><i class="chispa"></i><span><b>Cervezas bien tiradas</b> — para acompañar la ración o para quedarse un rato más.</span></li>
+        <li><i class="chispa"></i><span><b>Buena música</b> — el volumen justo para hablar y para animarse.</span></li>
+      </ul>
+      <div class="hero-cta">
+        <a class="btn btn-wa" href="https://wa.me/34636521691?text=Hola%20By%20Sol%2C%20quiero%20reservar%20para%20esta%20noche%20%F0%9F%8D%B9" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2m0 1.7a8.3 8.3 0 0 1 6.6 13.3 8.3 8.3 0 0 1-10.9 2.3l-.4-.2-3.1.8.8-3-.2-.4A8.3 8.3 0 0 1 12 3.7"/></svg>
+          Reservar mesa
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= POSTRES ================= -->
+<section class="dark" style="padding:0 0 clamp(4rem,9vw,7rem)">
+  <div class="wrap">
+    <div class="cabecera rv">
+      <span class="kicker">El final feliz</span>
+      <h2 class="neon-txt">Postres de la casa</h2>
+    </div>
+    <div class="galeria dos">
+      <figure class="plato rv" style="aspect-ratio:16/11"><img src="img/postre.webp" alt="Postre en vasito con crema y galleta" loading="lazy"><figcaption>Vasitos de la casa<em>Cremosos, hechos aquí</em></figcaption></figure>
+      <figure class="plato rv" style="aspect-ratio:16/11"><img src="img/postre2.webp" alt="Bandeja de postres en vasito" loading="lazy"><figcaption>Recién preparados<em>Pide el del día</em></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DOS ORILLAS ================= -->
+<section class="dark" style="padding:0 0 clamp(4rem,9vw,7rem)">
+  <div class="wrap dos-orillas">
+    <div class="marco rv"><img src="img/cartel.webp" alt="Cartel: Cafetería, Bar, Cervecería, Restaurante, Pizzería By Sol"></div>
+    <div class="rv">
+      <span class="kicker">Sabores con acento</span>
+      <h2 class="neon-txt">Dos orillas<br>en un mismo plato</h2>
+      <p class="lead" style="margin-top:1.3rem">Tequeños junto a una ensaladilla. Pizza artesanal al lado de un pulpo con patatas. En By Sol se juntan los sabores de allá y los de aquí, y se sirven en la misma mesa.</p>
+      <p class="lead">Nuestro compromiso es ofrecerte <strong style="color:#fff">buen servicio, productos de calidad y una experiencia que quieras repetir</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VISÍTANOS ================= -->
+<section class="dark visita" id="visitanos">
+  <div class="wrap">
+    <div class="cabecera rv" style="text-align:center;margin-inline:auto">
+      <span class="kicker">Te esperamos</span>
+      <h2 class="neon-txt">Ven a vernos</h2>
+    </div>
+    <div class="mapa-card rv">
+      <div>
+        <div class="dato">
+          <span>Dónde estamos</span>
+          <a href="https://maps.google.com/?q=Mercado+Guillermo+de+Osma,+Calle+Miguel+Arredondo+4,+28045+Madrid" target="_blank" rel="noopener">
+            Calle Miguel Arredondo, 4 — 28045 Madrid<br>Patio gastronómico del Mercado Guillermo de Osma
+          </a>
+        </div>
+        <div class="dato">
+          <span>Escríbenos</span>
+          <a href="https://wa.me/34636521691?text=%C2%A1Hola%20Restobar%20By%20Sol!%20Me%20gustar%C3%ADa%20reservar%20una%20mesa." target="_blank" rel="noopener">+34 636 52 16 91</a>
+          <p style="font-size:.88rem;color:#9C8BAB;font-weight:400;margin-top:.3rem">Toca el número y te abre WhatsApp con el mensaje listo</p>
+        </div>
+        <div class="dato" style="margin-bottom:0">
+          <span>Síguenos</span>
+          <a href="https://instagram.com/bysol2026" target="_blank" rel="noopener">@bysol2026</a>
+        </div>
+      </div>
+      <div class="acciones">
+        <a class="btn btn-wa" href="https://wa.me/34636521691?text=%C2%A1Hola%20Restobar%20By%20Sol!%20Me%20gustar%C3%ADa%20reservar%20una%20mesa." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2m0 1.7a8.3 8.3 0 0 1 6.6 13.3 8.3 8.3 0 0 1-10.9 2.3l-.4-.2-3.1.8.8-3-.2-.4A8.3 8.3 0 0 1 12 3.7"/></svg>
+          Enviar mensaje
+        </a>
+        <a class="btn btn-mapa" href="https://maps.google.com/?q=Mercado+Guillermo+de+Osma,+Calle+Miguel+Arredondo+4,+28045+Madrid" target="_blank" rel="noopener">📍 Cómo llegar</a>
+        <a class="btn btn-ig" href="https://instagram.com/bysol2026" target="_blank" rel="noopener">📸 Instagram</a>
+        <a class="btn btn-ghost" href="tel:+34636521691">📞 Llamar por teléfono</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="marca" href="#inicio"><img src="img/logo.webp" alt=""><span>Restobar<br><small>By Sol</small></span></a>
+    <p style="margin:0 0 .4rem">Calle Miguel Arredondo, 4 · 28045 Madrid · Mercado Guillermo de Osma</p>
+    <p style="margin:0"><a href="https://wa.me/34636521691" target="_blank" rel="noopener">WhatsApp</a> · <a href="https://instagram.com/bysol2026" target="_blank" rel="noopener">@bysol2026</a></p>
+  </div>
+</footer>
+
+<a class="wa-flota" id="waFlota" href="https://wa.me/34636521691?text=%C2%A1Hola%20Restobar%20By%20Sol!%20Me%20gustar%C3%ADa%20reservar%20una%20mesa." target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2m0 1.7a8.3 8.3 0 0 1 6.6 13.3 8.3 8.3 0 0 1-10.9 2.3l-.4-.2-3.1.8.8-3-.2-.4A8.3 8.3 0 0 1 12 3.7"/></svg>
+</a>
+
+<script>
+(function(){
+  var cab=document.getElementById('cabecera');
+  var barra=document.getElementById('barra');
+  var wa=document.getElementById('waFlota');
+  var sol=document.getElementById('sol');
+  var atardecer=document.querySelector('.atardecer');
+  var oscuras=Array.prototype.slice.call(document.querySelectorAll('.dark'));
+
+  // Revelado al hacer scroll
+  var obs=new IntersectionObserver(function(es){
+    es.forEach(function(e,i){
+      if(e.isIntersecting){
+        setTimeout(function(){e.target.classList.add('visto')}, (i%4)*90);
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:.14,rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.rv').forEach(function(el){obs.observe(el)});
+
+  var tic=false;
+  function pintar(){
+    var y=window.scrollY;
+    var alto=document.documentElement.scrollHeight-window.innerHeight;
+
+    cab.classList.toggle('stuck', y>40);
+    wa.classList.toggle('ver', y>500);
+    barra.style.width=(alto>0? (y/alto)*100 : 0)+'%';
+
+    // ¿la cabecera está sobre una zona oscura?
+    var sobreOscuro=oscuras.some(function(s){
+      var r=s.getBoundingClientRect();
+      return r.top<=70 && r.bottom>=70;
+    });
+    cab.classList.toggle('on-dark', sobreOscuro);
+
+    // El sol baja mientras pasa la sección del atardecer
+    if(sol&&atardecer){
+      var r=atardecer.getBoundingClientRect();
+      var p=Math.min(1,Math.max(0,(window.innerHeight-r.top)/(window.innerHeight+r.height)));
+      sol.style.transform='translate(-50%,'+(p*150)+'px) scale('+(1-p*0.2)+')';
+      sol.style.opacity=String(1-Math.max(0,p-0.72)*3);
+    }
+    tic=false;
+  }
+  window.addEventListener('scroll',function(){
+    if(!tic){tic=true;requestAnimationFrame(pintar)}
+  },{passive:true});
+  window.addEventListener('resize',pintar);
+  pintar();
+
+  // Parallax suave de las fotos del hero (solo en pantallas grandes)
+  if(window.matchMedia('(min-width:960px)').matches && !window.matchMedia('(prefers-reduced-motion:reduce)').matches){
+    var art=document.querySelector('.hero-art');
+    if(art){
+      var disco=art.querySelector('.disco');
+      art.addEventListener('mousemove',function(e){
+        var r=art.getBoundingClientRect();
+        var x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+        if(disco){disco.style.animation='none';
+          disco.style.transform='translate('+(x*22)+'px,'+(y*22)+'px)';}
+      });
+      art.addEventListener('mouseleave',function(){
+        if(disco){disco.style.transform='';disco.style.animation='';}
+      });
+    }
+  }
+})();
+</script>
 </body>
 </html>
